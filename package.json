@@ -1,5 +1,5 @@
 {
-  "name": "cashier",
+  "name": "node-cashier",
   "version": "0.0.1",
   "description": "A node module for express app to create and receive payments. ",
   "main": "index.js",
@@ -16,12 +16,13 @@
     "pay",
     "bill"
   ],
-  "author": "Greg Wang",
+  "author": "Greg Wang <gregwym@qq.com> (http://gregwym.info)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gregwym/cashier/issues"
   },
   "devDependencies": {
+    "jade": "0.35.x",
     "express": "3.3.x"
   }
 }
