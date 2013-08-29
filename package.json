@@ -1,0 +1,27 @@
+{
+  "name": "cashier",
+  "version": "0.0.1",
+  "description": "A node module for express app to create and receive payments. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregwym/cashier.git"
+  },
+  "keywords": [
+    "cashier",
+    "payment",
+    "pay",
+    "bill"
+  ],
+  "author": "Greg Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gregwym/cashier/issues"
+  },
+  "devDependencies": {
+    "express": "3.3.x"
+  }
+}
