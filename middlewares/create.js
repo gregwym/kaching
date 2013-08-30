@@ -18,16 +18,16 @@ module.exports = function(name, options, callback) {
   options = options || {};
 
   return function create(req, res) {
-    var cashier = this;
-    var prototype = cashier._strategies[name];
+    var kaching = this;
+    var prototype = kaching._strategies[name];
     if (!prototype) { throw new Error('no strategy registered under name: ' + name); }
 
     var strategy = Object.create(prototype);
     var context = new Context(null, req, res, null);
     augment(strategy, actions, context);
 
-    if (!req._cashier.session[name]) { req._cashier.session[name] = {}; }
-    strategy.session = req._cashier.session[name];
+    if (!req._kaching.session[name]) { req._kaching.session[name] = {}; }
+    strategy.session = req._kaching.session[name];
     strategy.create(req.payment || req.body, options);
   };
 };

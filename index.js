@@ -1,8 +1,8 @@
 var initialize = require('./middlewares/initialize'),
     create = require('./middlewares/create');
 
-function Cashier () {
-  this._key = 'cashier';
+function Kaching () {
+  this._key = 'kaching';
   this._strategies = {};
 }
 
@@ -12,10 +12,10 @@ function Cashier () {
  *
  * @param {String|Strategy} name
  * @param {Strategy} strategy
- * @return {Cashier} for chaining
+ * @return {Kaching} for chaining
  * @api public
  */
-Cashier.prototype.use = function(name, strategy) {
+Kaching.prototype.use = function(name, strategy) {
   if (!strategy) {
     strategy = name;
     name = strategy.name;
@@ -30,25 +30,25 @@ Cashier.prototype.use = function(name, strategy) {
  * Un-utilize the `strategy` with given `name`.
  *
  * @param {String} name
- * @return {Cashier} for chaining
+ * @return {Kaching} for chaining
  * @api public
  */
-Cashier.prototype.unuse = function(name) {
+Kaching.prototype.unuse = function(name) {
   delete this._strategies[name];
   return this;
 };
 
 /**
- * Cashier's primary initialization middleware.
+ * Kaching's primary initialization middleware.
  *
  * This middleware must be in use by the Connect/Express application for
- * Cashier to operate.
+ * Kaching to operate.
  *
  * @param {Object} options
  * @return {Function} middleware
  * @api public
  */
-Cashier.prototype.initialize = function() {
+Kaching.prototype.initialize = function() {
   return initialize().bind(this);
 };
 
@@ -62,7 +62,7 @@ Cashier.prototype.initialize = function() {
  * @return {Function} middleware
  * @api public
  */
-Cashier.prototype.create = function(strategy, options, callback) {
+Kaching.prototype.create = function(strategy, options, callback) {
   return create(strategy, options, callback).bind(this);
 };
 
@@ -71,6 +71,6 @@ Cashier.prototype.create = function(strategy, options, callback) {
  *
  * @api public
  */
-exports = module.exports = new Cashier();
+exports = module.exports = new Kaching();
 
 exports.Strategy = require('./strategy');

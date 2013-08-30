@@ -1,6 +1,6 @@
 var express = require('express'),
     app = express(),
-    cashier = require('../index');
+    kaching = require('kaching');
 
 app.set('views', __dirname);
 app.set('view engine', 'jade');
@@ -10,14 +10,14 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'secret' }));
-app.use(cashier.initialize());
+app.use(kaching.initialize());
 
 app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.get('/cashier/paypal', function(req, res, next) {
+app.get('/kaching/paypal', function(req, res, next) {
   next();
-}, cashier.create('paypal'));
+}, kaching.create('paypal'));
 
 app.listen(3000);

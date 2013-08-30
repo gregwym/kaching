@@ -1,5 +1,5 @@
 {
-  "name": "node-cashier",
+  "name": "kaching",
   "version": "0.0.1",
   "description": "A node module for express app to create and receive payments. ",
   "main": "index.js",
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gregwym/cashier.git"
+    "url": "git://github.com/gregwym/kaching.git"
   },
   "keywords": [
-    "cashier",
+    "kaching",
     "payment",
     "pay",
     "bill"
@@ -19,7 +19,7 @@
   "author": "Greg Wang <gregwym@qq.com> (http://gregwym.info)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gregwym/cashier/issues"
+    "url": "https://github.com/gregwym/kaching/issues"
   },
   "devDependencies": {
     "jade": "0.35.x",
