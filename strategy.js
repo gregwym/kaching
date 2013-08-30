@@ -14,9 +14,10 @@ function Strategy() {
  *
  * @param {Object} payment
  * @param {Object} options
+ * @param {Function} callback
  * @api protected
  */
-Strategy.prototype.create = function(payment, options) {
+Strategy.prototype.create = function(payment, options, callback) {
   throw new Error('Strategy#create must be overridden by subclass');
 };
 
