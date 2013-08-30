@@ -51,12 +51,16 @@ app.get('/kaching/paypal', function(req, res, next) {
   // Proceed to next step
   next();
 }, kaching.create('paypal', {
-  // Redirect URL is required for paypal payment.
+  // Redirect URL is mandatory for paypal payment.
   redirect_urls: {
     return_url: 'http://localhost:3000/kaching/paypal/return',
     cancel_url: 'http://localhost:3000/kaching/paypal/cancel'
-  }
-}));
+  },
+  // We have a request handler coming after, so set `passToNext` to true
+  passToNext: true
+}), function(req, res) {
+  console.log(JSON.stringify(req.payment));
+});
 
 app.get('/session', function(req, res) {
   res.json(req.session);
