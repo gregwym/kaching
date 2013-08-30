@@ -36,7 +36,7 @@ module.exports = function() {
       req._kaching.session = req.session[kaching._key];
     } else {
       // no session is available
-      req._kaching.session = {};
+      throw new Error('Kaching: Missing session support.');
     }
 
     next();
