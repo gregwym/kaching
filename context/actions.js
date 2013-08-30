@@ -10,7 +10,7 @@ var actions = module.exports = {};
  * Redirect to `url` with optional `status`, defaulting to 302.
  *
  * Strategies should call this function to redirect the user (via their user
- * agent) to a third-party website for authentication.
+ * agent) to a third-party website to continue the process.
  *
  * @param {String} url
  * @param {Number} status
@@ -36,11 +36,11 @@ actions.redirect = function(url, status) {
 };
 
 /**
- * Pass without making a success or fail decision.
+ * Pass to next request handler.
  *
- * Under most circumstances, Strategies should not need to call this function.
- * It exists primarily to allow previous authentication state to be restored,
- * for example from an HTTP session.
+ * Strategies should call this function when all the jobs has been completed,
+ * and want to give control to the following up request handler. Mostly used
+ * in middlewares.
  *
  * @api public
  */
@@ -51,11 +51,10 @@ actions.pass = function() {
 };
 
 /**
- * Internal error while performing authentication.
+ * Internal error.
  *
  * Strategies should call this function when an internal error occurs during the
- * process of performing authentication; for example, if the user directory is
- * not available.
+ * process. For example, paypal return 400 bad request.
  *
  * @param {Error} err
  * @api public
