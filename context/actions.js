@@ -1,3 +1,5 @@
+var debug = require('debug')('kaching');
+
 /**
  * Export actions prototype for strategies operating within an HTTP context.
  */
@@ -62,6 +64,7 @@ actions.error = function(err) {
   if (this.next) {
     this.next(err);
   } else {
+    debug(JSON.stringify(err));
     throw err;
   }
 };

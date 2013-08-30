@@ -24,5 +24,8 @@
   "devDependencies": {
     "jade": "0.35.x",
     "express": "3.3.x"
+  },
+  "dependencies": {
+    "debug": "0.7.x"
   }
 }
