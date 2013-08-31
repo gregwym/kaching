@@ -18,6 +18,7 @@ var actions = module.exports = {};
  */
 actions.redirect = function(url, status) {
   var res = this.res;
+  debug('Redirecting to ' + url +' with status ' + status);
   if (typeof res.redirect == 'function') {
     // If possible use redirect method on the response
     // Assume Express API, optional status param comes first
