@@ -48,19 +48,22 @@ app.get('/kaching/paypal', function(req, res, next) {
     // Payment transaction description
     description:'Kaching paypal test transaction'
   };
-  // Proceed to next step
+  // Proceed to create the payment
   next();
 }, kaching.create('paypal', {
   // Redirect URL is mandatory for paypal payment.
+  // You can also specify the redirect_urls for each payment.
   redirect_urls: {
     return_url: 'http://localhost:3000/kaching/paypal/return',
     cancel_url: 'http://localhost:3000/kaching/paypal/cancel'
-  },
-  // We have a request handler coming after, so set `passToNext` to true
-  passToNext: true
-}), function(req, res) {
+  }
+}), function(req, res, next) {
+  // Payment has been created, save it in the session for later reference.
   console.log(JSON.stringify(req.payment));
-});
+  req.session.payment = req.payment;
+  // Proceed to the approval process
+  next();
+}, kaching.approve('paypal'));
 
 app.get('/session', function(req, res) {
   res.json(req.session);

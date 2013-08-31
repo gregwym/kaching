@@ -21,6 +21,21 @@ Strategy.prototype.create = function(payment, options, callback) {
   throw new Error('Strategy#create must be overridden by subclass');
 };
 
+/**
+ * Proceed to approval process.
+ *
+ * This function must be overridden by subclasses.  In abstract form, it always
+ * throws an exception.
+ *
+ * @param {Object} payment
+ * @param {Object} options
+ * @param {Function} callback
+ * @api protected
+ */
+Strategy.prototype.approve = function(payment, options, callback) {
+  throw new Error('Strategy#approve must be overridden by subclass');
+};
+
 
 /**
  * Expose `Strategy`.

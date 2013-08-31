@@ -1,10 +1,20 @@
-var initialize = require('./middlewares/initialize'),
-    create = require('./middlewares/create');
+var create = require('./middlewares/create'),
+    approve = require('./middlewares/approve'),
+    initialize = require('./middlewares/initialize');
+
 
 function Kaching () {
   this._key = 'kaching';
   this._strategies = {};
 }
+
+Kaching.prototype.strategy = function(name) {
+  var strategy = this._strategies[name];
+  if (!strategy) {
+    throw new Error('no strategy registered under name: ' + name);
+  }
+  return strategy;
+};
 
 /**
  * Utilize the given `strategy` with optional `name`, overridding the strategy's
@@ -64,6 +74,20 @@ Kaching.prototype.initialize = function() {
  */
 Kaching.prototype.create = function(strategy, options, callback) {
   return create(strategy, options, callback).bind(this);
+};
+
+/**
+ * Middleware that will redirect to the approval url of the payment using
+ * the given `strategy` name, with optional `options` and `callback`.
+ *
+ * @param {String} strategy
+ * @param {Object} options
+ * @param {Function} callback
+ * @return {Function} middleware
+ * @api public
+ */
+Kaching.prototype.approve = function(strategy, options, callback) {
+  return approve(strategy, options, callback).bind(this);
 };
 
 /**
