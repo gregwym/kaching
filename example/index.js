@@ -68,7 +68,7 @@ app.get('/kaching/paypal', function(req, res, next) {
 app.get('/kaching/paypal/return', function(req, res, next) {
   // Prepare payment information and payerId
   req.payment = req.session.payment;
-  req.payerId = req.query.PayerID;
+  req.payment.payer_id = req.query.PayerID;
   next();
 }, kaching.execute('paypal'), function(req, res) {
   req.session.payment = req.payment;

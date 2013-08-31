@@ -43,12 +43,11 @@ Strategy.prototype.approve = function(payment, options, callback) {
  * throws an exception.
  *
  * @param {Object} payment
- * @param {String} payerId
  * @param {Object} options
  * @param {Function} callback
  * @api protected
  */
-Strategy.prototype.execute = function(payment, payerId, options, callback) {
+Strategy.prototype.execute = function(payment, options, callback) {
   throw new Error('Strategy#execute must be overridden by subclass');
 };
 
