@@ -1,5 +1,6 @@
 var create = require('./middlewares/create'),
     approve = require('./middlewares/approve'),
+    execute = require('./middlewares/execute'),
     initialize = require('./middlewares/initialize');
 
 
@@ -88,6 +89,20 @@ Kaching.prototype.create = function(strategy, options, callback) {
  */
 Kaching.prototype.approve = function(strategy, options, callback) {
   return approve(strategy, options, callback).bind(this);
+};
+
+/**
+ * Middleware that will process an approved payment using the given `strategy`
+ * name, with optional `options` and `callback`.
+ *
+ * @param {String} strategy
+ * @param {Object} options
+ * @param {Function} callback
+ * @return {Function} middleware
+ * @api public
+ */
+Kaching.prototype.execute = function(strategy, options, callback) {
+  return execute(strategy, options, callback).bind(this);
 };
 
 /**

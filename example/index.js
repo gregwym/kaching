@@ -65,6 +65,20 @@ app.get('/kaching/paypal', function(req, res, next) {
   next();
 }, kaching.approve('paypal'));
 
+app.get('/kaching/paypal/return', function(req, res, next) {
+  // Prepare payment information and payerId
+  req.payment = req.session.payment;
+  req.payerId = req.query.PayerID;
+  next();
+}, kaching.execute('paypal'), function(req, res) {
+  req.session.payment = req.payment;
+  res.redirect('/payment/result');
+});
+
+app.get('/payment/result', function(req, res) {
+  res.json(req.session.payment);
+});
+
 app.get('/session', function(req, res) {
   res.json(req.session);
 });
