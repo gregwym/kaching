@@ -6,3 +6,11 @@ Kaching is a simple payments solution for [Express](https://github.com/visionmed
 ## Install
 
 	$ npm install kaching
+
+## Example
+
+Kaching's example uses kaching-paypal. Please refer to: [https://github.com/gregwym/kaching/tree/master/example](https://github.com/gregwym/kaching/tree/master/example).
+
+## Usage
+
+Kaching has to work with at least one strategy. Please checkout [kaching-paypal](https://github.com/gregwym/kaching-paypal) for further instrcutions.
