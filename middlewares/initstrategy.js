@@ -11,8 +11,8 @@ module.exports = exports = function(kaching, name, res, req, next) {
   augment(strategy, actions, context);
 
   // Prepare strategy session namespace
-  req._kaching.session[name] = req._kaching.session[name] || {};
-  strategy.session = req._kaching.session[name];
+  // req._kaching.session[name] = req._kaching.session[name] || {};
+  // strategy.session = req._kaching.session[name];
   return strategy;
 };
 

@@ -20,7 +20,6 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'secret' }));
-app.use(kaching.initialize());
 
 app.get('/', function(req, res) {
   res.render('index');
