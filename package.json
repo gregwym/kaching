@@ -1,6 +1,6 @@
 {
   "name": "kaching",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A node module for express app to create and receive payments. ",
   "main": "index.js",
   "scripts": {
